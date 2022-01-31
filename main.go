@@ -19,3 +19,12 @@ var books = []book{
 	{ID: "3", Title: "War and Peace", Author: "Leo Tolstoy", Quantity: 6},
 }
 
+func getBooks(c *gin.Context){
+	c.IndentedJSON(http.StatusOK, books)
+}
+
+func main(){
+	router := gin.Default()
+	router.GET("/books", getBooks)
+	router.Run("localhost:8080")
+}
